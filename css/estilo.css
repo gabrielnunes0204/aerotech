@@ -1,0 +1,280 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    font-family: 'Arial', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+.menu {
+    grid-column: 1 / 6;
+    font-size: 1.15em;
+    background-color: #F7614F;
+}
+
+.menu a {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+.menu li:first-child {
+    font-weight: bold;
+}
+
+.item-menu.ativado:nth-child(2), .item-menu.ativado:nth-child(3), .item-menu.ativado:nth-child(4), .item-menu.ativado:nth-child(5) {
+    margin-left: 20px;
+    -webkit-transition: all 0.75s ease 0s;
+	-moz-transition: all 0.75s ease 0s;
+	-o-transition: all 0.75s ease 0s;
+	transition: all 0.75s ease 0s;
+}
+
+.item-menu.desativado {
+    margin-left: 10px;
+    -webkit-transition: all 0.75s ease 0s;
+	-moz-transition: all 0.75s ease 0s;
+	-o-transition: all 0.75s ease 0s;
+	transition: all 0.75s ease 0s;
+}
+
+/**/
+
+.introducao {
+    grid-column: 1 / 6;
+	background: url("../images/fundo-intro.jpg") center center;
+    height: 80vh;
+    box-shadow: 1px 1px 20px rgba(0,0,0,.5);
+}
+
+.introducao p {
+    text-align: center;
+}
+
+.introducao p:first-child {
+    font-family: 'Tinos', serif;
+    font-weight: bold;
+    font-size: 4rem;
+    margin-top: 190px;
+}
+
+.introducao p:nth-child(2) {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+/**/
+
+.pesquisa {
+    grid-column: 2 / 5;
+}
+
+.pesquisa button {
+    background-color: #F7614F;
+}
+
+.pesquisa button:hover {
+    background-color: #ff4040;
+}
+
+.btn-cor { /* APAGAR */
+    background-color: #F7614F;
+}
+
+.btn-cor:hover { /* APAGAR */
+	background-color: #ff4040;
+}
+
+.passagens {
+    grid-column: 1 / 6;
+}
+
+.passagens table {
+    margin: 0 auto;
+}
+
+.passagens table td {
+    padding: 30px;
+}
+
+.passagens .cifrao {
+	font-size: 22pt;
+}
+
+.sobre-empresa {
+    grid-column: 2 / 5;
+}
+
+.sobre-empresa p {
+    color: #000;
+}
+
+.perguntas-frequentes {
+    grid-column: 2 / 5;
+}
+
+.perguntas-lista dd {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+    margin-left: 35px;
+}
+
+.perguntas-lista dt::before{
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 10px;
+	margin-right: 10px;
+	border-radius: 4px;
+	background-color: #F7614F;
+}
+
+.section-info {
+    grid-column: 2 / 5;
+}
+
+.div-info {
+	border: 4px solid #eee;
+}
+
+.formulario {
+	grid-column: 2 / 5;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+}
+
+.dados-dev {
+    grid-column: 1 / 6;
+    background-color: #F7614F;
+}
+
+.dados-dev p {
+    font-size: 1rem;
+}
+
+.dados-dev a:hover {
+    text-decoration: underline;
+}
+
+/* PARA JS - PARTE DA FAQ SUAVE */
+.js-accordion dd {
+	display: none;
+}
+
+.js-accordion dt {
+	padding-bottom: 30px;
+	transition: .2s;
+}
+
+.js-accordion dd.ativo {
+	display: block !important;
+	animation: show .8s forwards;
+}
+
+@keyframes show {
+	from {
+		transform: translate3d(0, -10px, 0);
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+/* PARA JS - PARTE SUAVE DAS SECTION GERAIS */
+.js-smooth {
+    opacity: 0;
+    transition: .3s;
+    transform: translate3d(-30px, 0, 0);
+}
+
+.js-smooth.ativo {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+/* MEDIA QUERY - RESPONSIVO */
+@media(max-width: 1150px) {
+    .passagens table {
+        margin: 0 auto;
+    }
+
+    .sobre-empresa {
+        grid-column: 1 / 6;
+    }
+
+    .perguntas-frequentes {
+        grid-column: 1 / 5;
+        padding-left: 50px;
+    }
+
+    .dados {
+        text-align: center;
+    }
+}
+
+@media(max-width: 900px){
+    .menu {
+        text-align: center;
+        position: relative;
+    }
+
+    .menu li {
+        text-align: center;
+        padding: 10px;
+        margin-left: 0px;
+    }
+
+    .item-menu.ativado {
+        padding-left: 10px;
+        -webkit-transition: all 0.75s ease 0s;
+        -moz-transition: all 0.75s ease 0s;
+        -o-transition: all 0.75s ease 0s;
+        transition: all 0.75s ease 0s;
+    }
+    
+    .item-menu.desativado {
+        padding-left: 10px;
+        -webkit-transition: all 0.75s ease 0s;
+        -moz-transition: all 0.75s ease 0s;
+        -o-transition: all 0.75s ease 0s;
+        transition: all 0.75s ease 0s;
+    }
+
+    /**/
+
+    .introducao p:first-child {
+        font-size: 3rem;
+        margin-top: 100px;
+    }
+
+    /**/
+
+    .pesquisa {
+        grid-column: 1 / 6;
+    }
+
+    /**/
+
+    .passagens tr td {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+	.text-viagem {
+		font-size: 28pt;
+		text-align: center;
+	}
+}

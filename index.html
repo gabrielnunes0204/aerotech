@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Aerotech </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tinos:wght@400;700&family=Titillium+Web:wght@200;600&display=swap"
+    rel="stylesheet">
+  <link rel="shortcut icon" href="images/icon-aba.png">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+
+  <!-- ABERTURA MODAL COMPRA -->
+  <div class="modal fade modalPassagens" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true" id="modalCompra">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title font-weight-bold" id="tituloModal"> Faça sua Compra </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="form-check ml-3 col-md-3 col-4">
+              <input class="form-check-input" type="radio" name="radio" id="radioIda" value="ida" checked>
+              <label class="form-check-label" for="radioIda">
+                Somente Ida
+              </label>
+            </div>
+
+            <div class="form-check mb-3 col-md-3 col-4">
+              <input class="form-check-input" type="radio" name="radio" id="radioIdaViolta" value="ida-volta">
+              <label class="form-check-label" for="radioIdaViolta">
+                Ida/Volta
+              </label>
+            </div>
+            <div class="input-group mb-3 col-md-6">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputNome"> Nome </span>
+              </div>
+              <input type="text" class="form-control campos-modal" placeholder="Nome completo" aria-label="Nome"
+                aria-describedby="inputNome">
+            </div>
+
+            <div class="input-group mb-3 col-md-6">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputEmail"> E-mail </span>
+              </div>
+              <input type="text" class="form-control campos-modal" placeholder="exemplo@exemplo.com.br"
+                aria-label="Email" aria-describedby="inputEmail">
+            </div>
+
+            <div class="input-group mb-3 col-md-6">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputCPF"> CPF </span>
+              </div>
+              <input type="text" class="form-control campos-modal" placeholder="xxx.xxx.xxx-xx" aria-label="CPF"
+                aria-describedby="inputCPF" maxlength="11">
+            </div>
+
+            <div class="input-group mb-3 col-md-6">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputRG"> RG </span>
+              </div>
+              <input type="text" class="form-control campos-modal" placeholder="xx.xxx.xxx-x" aria-label="RG"
+                aria-describedby="inputRG" maxlength="12">
+            </div>
+
+            <div class="form-group rounded box-shadow pl-3 pr-3 pt-3">
+              <h2 class="lead font-weight-bold"> Forma de Pagamento </h2>
+              <div class="rounded box-shadow form-group">
+                <nav class="nav btn-group mb-3" id="formaPagamento" role="tablist">
+                  <button type="button" class="btn btn-cor text-white active btn-md botao-cartao" id="nav-cartao-tab"
+                    data-toggle="tab" href="#nav-cartao" role="tab" aria-controls="nav-cartao"
+                    aria-selected="true"> Cartão de Crédito </button>
+                  <button type="button" class="btn btn-cor text-white btn-md botao-boleto" id="nav-boleto-tab" data-toggle="tab"
+                    href="#nav-boleto" role="tab" aria-controls="nav-boleto" aria-selected="false"> Boleto
+                    Bancário </button>
+                </nav>
+                <div class="tab-content" id="formaPagamentoConteudo">
+                  <div class="tab-pane fade show active" id="nav-cartao" role="tabpanel"
+                    aria-labelledby="nav-cartao-tab">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputNomeCartao"> Nome no Cartão </label>
+                        <input type="text" class="form-control dados-cartao" id="inputNomeCartao"
+                          placeholder="Nome impresso no cartão">
+                      </div>
+                      <div class="form-group col-md-3 col-6">
+                        <label for="inputCidade"> Mês </label>
+                        <select id="inputCidade" class="form-control campo-selecao">
+                          <option>Expira mês...</option>
+                          <option>01</option>
+                          <option>02</option>
+                          <option>03</option>
+                          <option>04</option>
+                          <option>05</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-3 col-6">
+                        <label for="inputAno"> Ano </label>
+                        <select id="inputAno" class="form-control campo-selecao">
+                          <option>Expira ano...</option>
+                          <option>2017</option>
+                          <option>2018</option>
+                          <option>2019</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputNumeroCartao"> Número do Cartão </label>
+                        <input type="text" class="form-control dados-cartao" id="inputNumeroCartao"
+                          placeholder="5555 5555 5555 5555" maxlength="16">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="inputCodigo"> Código de Segurança </label>
+                        <input type="text" class="form-control dados-cartao" id="inputCodigo" placeholder="XXX" maxlength="3">
+                      </div>
+                      <div class="form-group col-md-3 col-6">
+                        <label for="inputVezes"> Quantas vezes? </label>
+                        <select id="inputVezes" class="form-control campo-selecao">
+                          <option>Selecione...</option>
+                          <option class="font-weight-bold">1x - R$ 357.00</option>
+                          <option class="font-weight-bold">2x - R$ 178.50</option>
+                          <option class="font-weight-bold">3x - R$ 119.00</option>
+                          <option class="font-weight-bold">4x - R$ 89.25</option>
+                          <option class="font-weight-bold">5x - R$ 71.50</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-boleto" role="tabpanel" aria-labelledby="nav-boleto-tab">
+                    <h4 class="lead"> Clique em contratar plano que enviaremos um boleto para o seu e-mail. </h4>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button type="button" class="btn btn-cor text-white botao-fechar" data-dismiss="modal"> Fechar </button>
+                  <button type="button" class="btn btn-success text-white botao-finalizar"> Finalizar Compra </button>
+                  <button type="button" class="btn btn-success text-white botao-finalizar_boleto" style="display: none;"> Finalizar Compra </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FECHAMENTO MODAL COMPRA -->
+
+  <ul class="nav py-4 fixed-top menu">
+    <li class="nav-item item-menu"><a href="#inicio" class="nav-link text-white"> Inicio </a></li>
+    <li class="nav-item item-menu"><a href="#" class="nav-link text-white"> Suas viagens </a></li>
+    <li class="nav-item item-menu"><a href="#" class="nav-link text-white"> Check-In </a></li>
+    <li class="nav-item item-menu"><a href="#passagens" class="nav-link text-white"> Ofertas </a></li>
+    <li class="nav-item item-menu"><a href="#contato" class="nav-link text-white"> Fale conosco </a></li>
+  </ul>
+
+  <section class="introducao js-smooth" id="inicio">
+    <p class="text-white font-italic titulo-introducao">
+      VIAJE COM A GENTE
+    </p>
+    <p class="lead text-white ml-3">
+      <!-- O que está esperando para viajar? Se cadastre na plataforma e confira todas as nossas ofertas -->
+    </p>
+  </section>
+
+  <section class="pesquisa js-smooth text-center py-5">
+    <h1 class="font-weight-bold text-pesquisa text-center pt-4 pb-4"> Faça sua busca </h1>
+    <div class="input-group">
+      <div class="input-group mb-3 div-input">
+        <div class="input-group-prepend mr-1">
+          <button type="button" class="btn btn-cor ml-2 rounded text-white font-weight-bold" id="btn-pesquisar">
+            Pesquisar </button>
+        </div>
+        <input type="text" class="form-control mr-1 rounded py-4 inputOrigem campo-pesquisa" placeholder="Digite a origem">
+        <input type="text" class="form-control mr-1 rounded py-4 inputDestino campo-pesquisa" placeholder="Digite o destino">
+      </div>
+    </div>
+  </section>
+
+  <section class="passagens js-smooth" id="passagens">
+    <h1 class="font-weight-bold text-center pt-4"> Passagens </h1>
+    <table>
+      <tr>
+        <td>
+          <div class="card p-4" style="width: 26rem;">
+            <img class="card-img-top" src="images/lisboa.png" alt="Imagem de capa do card" class="rounded">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold"> LISBOA </h5>
+              <p class="card-text"> É a capital de Portugal, situada na Europa </p>
+              <p class="card-text py-1 lead"> <span class="font-weight-bold cifrao">R$</span> 357.00</p>
+              <a href="" class="btn btn-cor text-white font-weight-bold" data-toggle="modal"
+                data-target=".modalPassagens"> Comprar </a>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="card p-4" style="width: 26rem;">
+            <img class="card-img-top" src="images/madri.png" alt="Imagem de capa do card" class="rounded">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold"> MADRI </h5>
+              <p class="card-text"> É a capital da Espanha, situada na europa </p>
+              <p class="card-text py-1 lead"> <span class="font-weight-bold cifrao">R$</span> 357.00</p>
+              <a href="" class="btn btn-cor text-white font-weight-bold" data-toggle="modal"
+                data-target=".modalPassagens"> Comprar </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="card p-4" style="width: 26rem;">
+            <img class="card-img-top" src="images/novaYork.png" alt="Imagem de capa do card">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold"> NOVA YORK </h5>
+              <p class="card-text"> É um cidade dos E.U.A, situada na América do Norte </p>
+              <p class="card-text py-1 lead"> <span class="font-weight-bold cifrao">R$</span> 357.00</p>
+              <a href="" class="btn btn-cor text-white font-weight-bold" data-toggle="modal"
+                data-target=".modalPassagens"> Comprar </a>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="card p-4" style="width: 26rem;">
+            <img class="card-img-top" src="images/cancun.png" alt="Imagem de capa do card" class="rounded">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold"> CANCUN </h5>
+              <p class="card-text"> É uma cidade do México, situada na América do Norte </p>
+              <p class="card-text py-1 lead"> <span class="font-weight-bold cifrao">R$</span> 357.00</p>
+              <a href="" class="btn btn-cor text-white font-weight-bold" data-toggle="modal"
+                data-target=".modalPassagens"> Comprar </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="card p-4" style="width: 26rem;">
+            <img class="card-img-top" src="images/jamaica.png" alt="Imagem de capa do card" class="rounded">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold"> JAMAICA </h5>
+              <p class="card-text"> É um país insular do Caribe, localizado na América do Norte, sua capital é Kingston
+              </p>
+              <p class="card-text py-1 lead"> <span class="font-weight-bold cifrao">R$</span> 357.00</p>
+              <a href="" class="btn btn-cor text-white font-weight-bold" data-toggle="modal"
+                data-target=".modalPassagens"> Comprar </a>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="card p-4" style="width: 26rem;">
+            <img class="card-img-top" src="images/veneza.png" alt="Imagem de capa do card" class="rounded">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold"> VENEZA </h5>
+              <p class="card-text"> É uma cidade da Itália, situada na Europa, conhecida pelo seu rio extenso. </p>
+              <p class="card-text py-1 lead"> <span class="font-weight-bold cifrao">R$</span> 357.00</p>
+              <a href="" class="btn btn-cor text-white font-weight-bold" data-toggle="modal"
+                data-target=".modalPassagens"> Comprar </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="sobre-empresa js-smooth pt-5 text-center">
+    <h1 class="font-weight-bold"> A Empresa </h1>
+    <p class="lead p-5 text-justify">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus voluptatibus quam doloribus molestias deserunt
+      corporis dolorum voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, consequuntur aliquid
+      dolor officiis doloribus magni sed beatae voluptatem voluptatibus, doloremque natus consequatur repudiandae
+      accusamus itaque similique, inventore nemo architecto illum.
+    </p>
+  </section>
+
+  <section class="perguntas-frequentes js-smooth text-justify js-scroll" id="faq">
+    <h1 class="titulo font-weight-bold"> FAQ </h1>
+    <dl class="perguntas-lista js-accordion">
+      <dt class="lead font-weight-bold"> Posso remarcar minha viagem? </dt>
+      <dd class="pb-4"> 1 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, vitae. Ducimus labore
+        exercitationem tempore incidunt! </dd>
+
+      <dt class="lead font-weight-bold"> Como funciona o sistema de pontos? </dt>
+      <dd class="pb-4"> 2 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, vitae. Ducimus labore
+        exercitationem tempore incidunt! </dd>
+
+      <dt class="lead font-weight-bold"> Quais os beneficios do Programa de Milhas? </dt>
+      <dd class="pb-4"> 3 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, vitae. Ducimus labore
+        exercitationem tempore incidunt! </dd>
+
+      <dt class="lead font-weight-bold"> Qual o procedimento em caso de cancelamento? </dt>
+      <dd class="pb-4"> 4 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, vitae. Ducimus labore
+        exercitationem tempore incidunt! </dd>
+    </dl>
+  </section>
+
+  <form class="formulario js-smooth" id="contato">
+    <h1 class="titulo font-weight-bold text-center py-2"> Entre em Contato </h1>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputNome"> Nome </label>
+        <input type="text" class="form-control campo-formulario" id="inputNome" placeholder="Nome completo">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail"> E-mail </label>
+        <input type="email" class="form-control campo-formulario" id="inputEmail" placeholder="E-mail">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputEndereco"> Endereço </label>
+      <input type="text" class="form-control campo-formulario" id="inputEndereco" placeholder="Rua Ali do Lado, nº 0">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCidade"> Cidade </label>
+        <input type="text" class="form-control campo-formulario" id="inputCidade" placeholder="Cidade">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputCelular"> Telefone </label>
+        <input type="text" class="form-control campo-formulario" id="inputCelular" placeholder="(55) 55555-5555">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-cor text-white mb-4 botao-enviar"> Enviar </button>
+  </form>
+
+  <footer class="dados-dev py-3 text-center">
+    <p class="lead footer-cor text-white">
+      @Copyright - 2021 - <a href="" class="text-white"> gabriel_nunes@gmail.com </a>
+    </p>
+  </footer>
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+  crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>
